@@ -2,7 +2,7 @@
 
 include(__DIR__.'/src/Captcha.php');
 
-$captcha = new ZerosDev\Captcha(6);
+$captcha = new ZerosDev\Captcha();
 $image = $captcha->getImage();
 $id = $captcha->getId();
 

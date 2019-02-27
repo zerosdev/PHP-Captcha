@@ -1,0 +1,13 @@
+{
+    "name": "ZerosDev/Captcha",
+    "description": "Captcha generator",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zeros Technology",
+            "email": "admin@zeros.co.id"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

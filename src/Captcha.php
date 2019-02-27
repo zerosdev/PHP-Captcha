@@ -6,21 +6,34 @@ use Exception;
 
 class Captcha
 {
+	/** captcha id **/
 	protected $id = null;
+
+	/** image buffer data **/
 	protected $bufferData = null;
+
+	/** error message **/
 	protected $error = null;
+
+	/** latest captcha session key **/
 	protected $lastSessionKey = '';
+
+	/** default captcha image width (px) **/
 	protected $width = 170;
+
+	/** default captcha image height (px) **/
 	protected $height = 50;
+
+	/** default captcha characters **/
 	protected $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+	/** default captcha length */
 	protected $captchaLength = 6;
 
 	/**
 	*	
 	*	Initializing captcha
 	*	
-	*	@param Length of Captcha $length
-	*	@param Captcha Character list $chars
 	*	@return void
 	*
 	**/
@@ -30,7 +43,8 @@ class Captcha
 		$this->font = dirname(__DIR__).'/data/fonts/Arimo-Bold.ttf';
 
 		/** Check if font is exists **/
-		if( !file_exists($this->font) || !is_file($this->font) ) {
+		if( !file_exists($this->font) || !is_file($this->font) )
+		{
 			$this->error = 'Font file is not found!';
 		}
 
@@ -48,17 +62,45 @@ class Captcha
 		}
 	}
 
+	/**
+	*	
+	*	Set the character list
+	*
+	*	@param string of character $chars
+	*	@return ZerosDev\Captcha
+	*
+	**/
+
 	public function chars($chars)
 	{
 		$this->chars = $chars;
 		return $this;
 	}
 
+	/**
+	*	
+	*	Set the length of captcha code
+	*
+	*	@param integer $length
+	*	@return ZerosDev\Captcha
+	*
+	**/
+
 	public function length($length)
 	{
 		$this->captchaLength = $length;
 		return $this;
 	}
+
+	/**
+	*	
+	*	Set the size of captcha image
+	*
+	*	@param integer $width
+	*	@param integer $height
+	*	@return ZerosDev\Captcha
+	*
+	**/
 
 	public function size($width, $height)
 	{

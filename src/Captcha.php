@@ -10,12 +10,10 @@ class Captcha
 	protected $bufferData = null;
 	protected $error = null;
 	protected $lastSessionKey = '';
-	protected $width, $height;
-
-	const WIDTH = 170;
-	const HEIGHT = 50;
-	const CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-	const LENGTH = 6;
+	protected $width = 170;
+	protected $height = 50;
+	protected $chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	protected $captchaLength = 6;
 
 	/**
 	*	
@@ -27,13 +25,9 @@ class Captcha
 	*
 	**/
 
-	public function __construct($length = self::LENGTH, $width = self::WIDTH, $height = self::HEIGHT)
+	public function __construct()
 	{
 		$this->font = dirname(__DIR__).'/data/fonts/Arimo-Bold.ttf';
-		$this->chars = self::CHARS;
-		$this->captchaLength = $length;
-		$this->width = $width;
-		$this->height = $height;
 
 		/** Check if font is exists **/
 		if( !file_exists($this->font) || !is_file($this->font) ) {
@@ -41,11 +35,36 @@ class Captcha
 		}
 
 		/** Start session if not started **/
-		if( session_status() !== PHP_SESSION_ACTIVE ) {
-			session_start();
+		if( session_status() !== PHP_SESSION_ACTIVE )
+		{
+			if( !headers_sent() )
+			{
+				session_start();
+			}
+			else
+			{
+				$this->error = 'Session can not be started';
+			}
 		}
+	}
 
-		$this->generate($this->captchaLength, $this->chars, $this->width, $this->height);
+	public function chars($chars)
+	{
+		$this->chars = $chars;
+		return $this;
+	}
+
+	public function length($length)
+	{
+		$this->captchaLength = $length;
+		return $this;
+	}
+
+	public function size($width, $height)
+	{
+		$this->width = intval($width);
+		$this->height = intval($height);
+		return $this;
 	}
 
 	/**
@@ -56,7 +75,7 @@ class Captcha
 	*
 	**/
 
-	private function generate($length = self::LENGTH, $chars = self::CHARS, $width = self::WIDTH, $height = self::HEIGHT)
+	public function generate()
 	{
 		try
 		{
@@ -64,21 +83,21 @@ class Captcha
 				throw new Exception($this->error());
 			}
 
-			$image = imagecreatetruecolor($width, $height);
+			$image = imagecreatetruecolor($this->width, $this->height);
 			$background_color = imagecolorallocate($image, 255, 255, 255);  
-			imagefilledrectangle($image, 0, 0, $width, $height, $background_color);
+			imagefilledrectangle($image, 0, 0, $this->width, $this->height, $background_color);
 			$line_color = imagecolorallocate($image, 64,64,64);
 
 			for($i=0; $i<10; $i++)
 			{
-				imageline($image, 0, rand()%$height, $width, rand()%$height, $line_color);
+				imageline($image, 0, rand()%$this->height, $this->width, rand()%$this->height, $line_color);
 			}
 
 			$pixel_color = imagecolorallocate($image, 0, 0, 255);
 
 			for($i=0; $i<1000; $i++)
 			{
-				imagesetpixel($image, rand()%$width, rand()%$height, $pixel_color);
+				imagesetpixel($image, rand()%$this->width, rand()%$this->height, $pixel_color);
 			}
 
 			$len = strlen($this->chars);
@@ -120,13 +139,13 @@ class Captcha
 			$sessionValue = json_encode($cd);
 			$_SESSION['captcha'] = $sessionValue;
 
-			return true;
+			return $this;
 		}
 		catch(Exception $e)
 		{
 			$this->error = $e->getMessage();
 
-			return false;
+			return $this;
 		}
 	}
 

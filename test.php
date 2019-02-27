@@ -3,7 +3,8 @@
 include(__DIR__.'/src/Captcha.php');
 
 $captcha = new ZerosDev\Captcha();
-$image = $captcha->getImage();
-$id = $captcha->getId();
+$generate = $captcha->length(6)->generate();
+$image = $generate->getImage();
+$id = $generate->getId();
 
 echo '<img src="' . $image . '" id="' . $id . '" />';

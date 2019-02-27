@@ -11,7 +11,7 @@ Used to get base64 image of generated captcha
 
 ### id()
 
-Used to get captcha generation id, this id is used to validating the captcha input from client/user
+Used to get captcha generation id, this id is used to validate the captcha input from client/user
 
 ### chars($chars)
 

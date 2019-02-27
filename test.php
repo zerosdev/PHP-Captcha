@@ -6,4 +6,4 @@ $captcha = new ZerosDev\Captcha(6);
 $image = $captcha->getImage();
 $id = $captcha->getId();
 
-echo $id;
+echo '<img src="' . $image . '" id="' . $id . '" />';

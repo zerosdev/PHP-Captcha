@@ -157,7 +157,7 @@ class Captcha
 	*
 	**/
 
-	public function getImage()
+	public function image()
 	{
 		if( $this->isError() ) {
 			return null;
@@ -174,7 +174,7 @@ class Captcha
 	*
 	**/
 
-	public function getId()
+	public function id()
 	{
 		if( $this->isError() ) {
 			return null;

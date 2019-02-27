@@ -1,4 +1,4 @@
-# PHP-Captcha
+# PHP Captcha
 PHP Captcha Generator
 
 To use this library, you need PHP 5.6+ used on your server
@@ -13,6 +13,22 @@ Used to get base64 image of generated captcha
 
 Used to get captcha generation id, this id is used to validating the captcha input from client/user
 
+### chars()
+
+Set the character list that will be used to generate captcha code
+
+### length()
+
+Define the captcha code length
+
+### size($width, $height)
+
+Set the width and height of captcha image
+
+### generate()
+
+Generate captcha
+
 ## EXAMPLE USAGE
 
 ### HTML Form
@@ -22,7 +38,7 @@ Used to get captcha generation id, this id is used to validating the captcha inp
 require __DIR__.&apos;/path/to/src/Captcha.php&apos;;
 
 $captcha = new ZerosDev\Captcha();
-$generate = $captcha-&gt;length(6)-&gt;size(170, 50)-&gt;generate();
+$generate = $captcha-&gt;length(6)-&gt;chars('ABCDEFGHIJKLMNOPQRSTUVWXYZ')-&gt;size(170, 50)-&gt;generate();
 
 ?&gt;
 

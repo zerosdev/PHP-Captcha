@@ -79,7 +79,7 @@ class Captcha
 	* Set the character list
 	*
 	* @param string of character $chars
-	* @return ZerosDev\Captcha
+	* @return \ZerosDev\Captcha
 	*
 	**/
 
@@ -94,7 +94,7 @@ class Captcha
 	* Set the length of captcha code
 	*
 	* @param integer $length
-	* @return ZerosDev\Captcha
+	* @return \ZerosDev\Captcha
 	*
 	**/
 
@@ -110,7 +110,7 @@ class Captcha
 	*
 	* @param integer $width
 	* @param integer $height
-	* @return ZerosDev\Captcha
+	* @return \ZerosDev\Captcha
 	*
 	**/
 
@@ -125,7 +125,7 @@ class Captcha
 	*	
 	* Generating captcha
 	*	
-	* @return boolean
+	* @return \ZerosDev\Captcha
 	*
 	**/
 

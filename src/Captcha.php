@@ -1,5 +1,17 @@
 <?php
 
+/**
+*
+* PHP Captcha Generator
+*
+* (c) Zeros Technology
+*
+* @link www.zeros.co.id
+*
+* @link https://github.com/ZerosDev/PHP-Captcha
+*
+**/
+
 namespace ZerosDev;
 
 use Exception;
@@ -32,9 +44,9 @@ class Captcha
 
 	/**
 	*	
-	*	Initializing captcha
+	* Initializing captcha
 	*	
-	*	@return void
+	* @return void
 	*
 	**/
 
@@ -64,10 +76,10 @@ class Captcha
 
 	/**
 	*	
-	*	Set the character list
+	* Set the character list
 	*
-	*	@param string of character $chars
-	*	@return ZerosDev\Captcha
+	* @param string of character $chars
+	* @return ZerosDev\Captcha
 	*
 	**/
 
@@ -79,10 +91,10 @@ class Captcha
 
 	/**
 	*	
-	*	Set the length of captcha code
+	* Set the length of captcha code
 	*
-	*	@param integer $length
-	*	@return ZerosDev\Captcha
+	* @param integer $length
+	* @return ZerosDev\Captcha
 	*
 	**/
 
@@ -94,11 +106,11 @@ class Captcha
 
 	/**
 	*	
-	*	Set the size of captcha image
+	* Set the size of captcha image
 	*
-	*	@param integer $width
-	*	@param integer $height
-	*	@return ZerosDev\Captcha
+	* @param integer $width
+	* @param integer $height
+	* @return ZerosDev\Captcha
 	*
 	**/
 
@@ -111,9 +123,9 @@ class Captcha
 
 	/**
 	*	
-	*	Generating captcha
+	* Generating captcha
 	*	
-	*	@return boolean
+	* @return boolean
 	*
 	**/
 
@@ -180,22 +192,20 @@ class Captcha
 			$cd[$this->lastSessionKey] = $word;
 			$sessionValue = json_encode($cd);
 			$_SESSION['captcha'] = $sessionValue;
-
-			return $this;
 		}
 		catch(Exception $e)
 		{
 			$this->error = $e->getMessage();
-
-			return $this;
 		}
+
+		return $this;
 	}
 
 	/**
+	*
+	* Get captcha image
 	*	
-	*	Get captcha image
-	*	
-	*	@return string of generated base64 image
+	* @return string of generated base64 image
 	*
 	**/
 
@@ -210,9 +220,9 @@ class Captcha
 
 	/**
 	*	
-	*	Get captcha id
+	* Get captcha id
 	*	
-	*	@return string of captcha generation id
+	* @return string of captcha generation id
 	*
 	**/
 
@@ -227,11 +237,11 @@ class Captcha
 
 	/**
 	*	
-	*	Validating captcha
+	* Validating captcha
 	*	
-	*	@param Captcha ID $id
-	*	@param Captcha Code $captcha
-	*	@return boolean
+	* @param Captcha ID $id
+	* @param Captcha Code $captcha
+	* @return boolean
 	*
 	**/
 
@@ -266,9 +276,9 @@ class Captcha
 
 	/**
 	*	
-	*	Check if there is an error occured
+	* Check if there is an error occured
 	*	
-	*	@return boolean
+	* @return boolean
 	*
 	**/
 
@@ -279,9 +289,9 @@ class Captcha
 
 	/**
 	*	
-	*	Get error message
+	* Get error message
 	*	
-	*	@return string of error message
+	* @return string of error message
 	*
 	**/
 

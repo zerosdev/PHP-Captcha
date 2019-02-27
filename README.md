@@ -1,7 +1,6 @@
-# PHP Captcha
-PHP Captcha Generator
+# PHP Captcha Generator
 
-To use this library, you need PHP 5.6+ used on your server
+To use this library, make sure you are using PHP 5.6 or latest
 
 ## AVAILABLE METHOD
 

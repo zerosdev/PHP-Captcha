@@ -38,7 +38,7 @@ Validate captcha from user input
 <pre><code>
 &lt;?php
 
-require __DIR__.&apos;/path/to/src/Captcha.php&apos;;
+require &apos;/path/to/src/Captcha.php&apos;;
 
 $captcha = new ZerosDev\Captcha();
 $generate = $captcha-&gt;length(6)-&gt;chars('ABCDEFGHIJKLMNOPQRSTUVWXYZ')-&gt;size(170, 50)-&gt;generate();
@@ -60,7 +60,7 @@ $generate = $captcha-&gt;length(6)-&gt;chars('ABCDEFGHIJKLMNOPQRSTUVWXYZ')-&gt;s
 <pre><code>
 &lt;?php
 
-require __DIR__.&apos;/path/to/src/Captcha.php&apos;;
+require &apos;/path/to/src/Captcha.php&apos;;
 
 $captcha = new ZerosDev\Captcha();
 

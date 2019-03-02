@@ -12,15 +12,15 @@ Used to get base64 image of generated captcha
 
 Used to get captcha generation id, this id is used to validate the captcha input from client/user
 
-### chars($chars)
+### chars()
 
 Set the character list that will be used to generate captcha code
 
-### length($length)
+### length()
 
 Define the captcha code length
 
-### size($width, $height)
+### size()
 
 Set the width and height of captcha image
 
@@ -28,7 +28,15 @@ Set the width and height of captcha image
 
 Generate captcha
 
-### validate($id, $captchaCode)
+### form_field()
+
+Generate html hidden input of Captcha ID
+
+### html_image()
+
+Generate html image tag
+
+### validate()
 
 Validate captcha from user input
 

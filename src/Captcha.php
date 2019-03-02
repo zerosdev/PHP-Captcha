@@ -237,6 +237,53 @@ class Captcha
 
 	/**
 	*	
+	* Generate html hidden input
+	*	
+	* @param Captcha ID $id
+	* 
+	* @return html
+	*
+	**/
+	
+	public function form_field($id = null)
+	{
+	    if( $this->isError() ) {
+			return null;
+		}
+
+		return '<input type="hidden" name="captcha_id" value="' . ($id ? $id : $this->id) . '">';
+	}
+	
+	/**
+	*	
+	* Creating html tag of captcha image
+	*	
+	* @param HTML Attributes (array) $attributes
+	* 
+	* @return html
+	*
+	**/
+	
+	public function html_image($attributes = [])
+	{
+	    if( $this->isError() ) {
+			return null;
+		}
+		
+		$html = '<img src="' . $this->image() . '" ';
+		
+		foreach($attributes as $name => $value)
+		{
+		    $html .= $name.'="'.$value.'" ';
+		}
+		
+		$html .= '/>';
+
+		return $html;
+	}
+
+	/**
+	*	
 	* Validating captcha
 	*	
 	* @param Captcha ID $id
